@@ -95,7 +95,7 @@ const register = async (userData) => {
   } catch (error) {
     console.log(error)
     dispatch(fetchFail())
-    toastErrorNotify(error.response.data.non_field_errors[0])
+    toastErrorNotify("kayit basarisiz olmustur")
   }
 }
 
