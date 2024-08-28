@@ -27,12 +27,11 @@
 //   }
 // }
 
-import React from 'react'
 import axios from "axios"
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
-import { fetchFail, fetchStart, loginSuccess, logoutSuccess} from "../features/authSlice"
+import { fetchFail, fetchStart, loginSuccess, logoutSuccess, registerSuccess} from "../features/authSlice"
 
 const useAuthCall = () => {
   const navigate = useNavigate()
@@ -41,12 +40,14 @@ const useAuthCall = () => {
   const login = async (userData) => {
 
 
-    const BASE_URL = "https://27113.fullstack.clarusway.com/"
+    // const BASE_URL = "https://27113.fullstack.clarusway.com/"
+    console.log(import.meta.env.VITE_API_KEY)
+    console.log(import.meta.env.VITE_API_KEY_PROD)
   
     dispatch(fetchStart())
     try {
       const {data} = await axios.post(
-        `${BASE_URL}/account/auth/login/`,
+        `${import.meta.env.VITE_BASE_URL}/account/auth/login/`,
       userData
       )
       dispatch(loginSuccess(data))
@@ -55,7 +56,7 @@ const useAuthCall = () => {
     } catch (error) {
       console.log(error)
       dispatch(fetchFail())
-      toastErrorNotify("login islemi basarisiz")
+      toastErrorNotify(error.response.data.non_field_errors[0])
     }
   }
 
@@ -63,22 +64,42 @@ const useAuthCall = () => {
  const logout = async () => {
 
 
-  const BASE_URL = "https://27113.fullstack.clarusway.com/"
+  // const BASE_URL = "https://27113.fullstack.clarusway.com/"
 
   dispatch(fetchStart())
   try {
     await axios.post(
-      `${BASE_URL}/account/auth/logout/`)
+      `${import.meta.env.VITE_BASE_URL}/account/auth/logout/`)
     dispatch(logoutSuccess())
     toastSuccessNotify("logout islemi basarili")
     navigate("/")
   } catch (error) {
     console.log(error)
     dispatch(fetchFail())
-    toastErrorNotify("logout islemi basarisiz")
+    toastErrorNotify(error.response.data.non_field_errors[0])
   }
 }
-  return {login, logout}
+const register = async (userData) => {
+  console.log(import.meta.env.VITE_API_KEY)
+  console.log(import.meta.env.VITE_API_KEY_PROD)
+
+  dispatch(fetchStart())
+  try {
+    const {data} = await axios.post(
+      `${import.meta.env.VITE_BASE_URL}/account/register/`,
+    userData
+    )
+    dispatch(registerSuccess(data))
+    toastSuccessNotify("register islemi basarili")
+    navigate("/stock")
+  } catch (error) {
+    console.log(error)
+    dispatch(fetchFail())
+    toastErrorNotify(error.response.data.non_field_errors[0])
+  }
+}
+
+  return {login, logout, register}
   
 }
 
