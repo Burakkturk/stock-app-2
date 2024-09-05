@@ -45,24 +45,31 @@ const icons = [
   {
     title: "Admin Panel",
     icon: <SupervisorAccountIcon />,
-    url: "https://10001.fullstack.clarusway.com/admin",
+    url: "https://27113.fullstack.clarusway.com/admin/",
   },
 ];
 
 const MenuListItems = () => {
-
-    const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div>
       {" "}
       <List>
         {icons.map((item, index) => (
-          <ListItem key={index} disablePadding onClick={() => navigate(item.url)}
-          sx={{color:"white", 
-          "& .MuiSvgIcon-root": {color: "white"}  ,
-          "&:hover": {color:"red"},
-          "&:hover .MuiSvgIcon-root" : {color: "red"}
-        }}
+          <ListItem
+            key={index}
+            disablePadding
+            onClick={() =>  {
+             item.url.includes("http" || "www")
+             ? window.open(item.url, "_blank") 
+              : navigate(item.url)
+            }}
+            sx={{
+              color: "white",
+              "& .MuiSvgIcon-root": { color: "white" },
+              "&:hover": { color: "red" },
+              "&:hover .MuiSvgIcon-root": { color: "red" },
+            }}
           >
             <ListItemButton>
               <ListItemIcon>{item.icon}</ListItemIcon>
