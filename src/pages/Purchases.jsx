@@ -1,9 +1,24 @@
+import { useEffect } from "react"
+import useStockCall from "../hooks/useStockCall"
+import { useSelector } from "react-redux"
+
 const Purchases = () => {
-// useEffect(() => {
-//   getFirms()
-// }, [third] )
 
 
+
+
+
+const {getStockData} =useStockCall()
+
+
+
+
+const {purchases} = useSelector((state) => state.stock)
+useEffect(() => {
+  getStockData("purchases")
+}, [] )
+
+console.log(purchases)
   return <div>Purchases</div>
 }
 

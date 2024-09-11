@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux"
 const useStockCall = () => {
   const {token} = useSelector((state) => state.auth)
   const dispatch = useDispatch()
+
+  
   const getStockData = async (url) => {
     dispatch(fetchStart())
 try {
