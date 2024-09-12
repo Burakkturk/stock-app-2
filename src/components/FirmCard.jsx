@@ -14,9 +14,10 @@ export default function FirmCard({firm}) {
         p: 2,
         maxWidth: "300px",
         height: "400px",
-        
-    
+        display: "flex",
+        flexDirection: "column",
         justifyContent: "space-between",
+        alignItems: "center"
 
 
     }}>
