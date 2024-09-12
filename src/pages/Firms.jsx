@@ -1,9 +1,11 @@
 import { useEffect } from "react"
 import { Button, Typography } from "@mui/material"
+import Grid from "@mui/material/Grid"
 import axios from "axios"
 // import { fetchFail, fetchStart, getFirmsSuccess } from "../features/stockSlice"
 import { useDispatch, useSelector } from "react-redux"
 import useStockCall from "../hooks/useStockCall_old"
+import FirmCard from "../components/FirmCard"
 
 const Firms = () => {
 // const {token} = useSelector((state) => state.auth)
@@ -37,6 +39,18 @@ console.log(firms)
   return <div>
 <Typography variant="h4" color={"error"} mb={3}>Firms</Typography>
 <Button variant="contained">NEW FIRM</Button>
+
+<Grid container>
+
+
+{firms?.map( (firm) => (
+  <Grid item key={firm.id}>
+<FirmCard firm={firm}/>
+    
+  </Grid>
+) )}
+  
+</Grid>
 
   </div>
 }
