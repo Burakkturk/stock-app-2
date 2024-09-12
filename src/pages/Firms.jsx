@@ -3,7 +3,7 @@ import { Button, Typography } from "@mui/material"
 import axios from "axios"
 // import { fetchFail, fetchStart, getFirmsSuccess } from "../features/stockSlice"
 import { useDispatch, useSelector } from "react-redux"
-import useStockCall from "../hooks/useStockCall"
+import useStockCall from "../hooks/useStockCall_old"
 
 const Firms = () => {
 // const {token} = useSelector((state) => state.auth)

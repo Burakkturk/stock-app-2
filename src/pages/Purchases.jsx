@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import useStockCall from "../hooks/useStockCall"
+import useStockCall from "../hooks/useStockCall_old"
 import { useSelector } from "react-redux"
 
 const Purchases = () => {

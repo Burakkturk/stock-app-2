@@ -1,14 +1,21 @@
+import axios from "axios";
 import { fetchFail, fetchStart, getStockSuccess } from "../features/stockSlice";
 import { useDispatch, useSelector } from "react-redux";
-import useAxios from "./useAxios";
+import {toastErrorNotify, toastSuccessNotify} from "../helper/ToastNotify"
+
 const useStockCall = () => {
- 
+  const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  const { axiosWithToken } = useAxios();
+
   const getStockData = async (url) => {
     dispatch(fetchStart());
     try {
-      const { data } = await axiosWithToken(`/stock/${url}/`),
+      const { data } = await axios(
+        `${import.meta.env.VITE_BASE_URL}/stock/${url}/`,
+        {
+          headers: { Authorization: `Token ${token}` },
+        }
+      );
       dispatch(getStockSuccess({ data, url }));
       console.log(data);
     } catch (error) {
@@ -20,14 +27,16 @@ const useStockCall = () => {
   const deleteStockData = async (url, id) => {
     dispatch(fetchStart());
     try {
-      await axiosWithToken.delete(`/stock/${url}/${id}/`);
+      await axios.delete(`${import.meta.env.VITE_BASE_URL}/stock/${url}/${id}/`, {
+        headers: { Authorization: `Token ${token}` },
+      });
 
-      toastSuccessNotify(`${url} succesfuly deleted`);
-      getStockData(url);
+      toastSuccessNotify( `${url} succesfuly deleted` )
+      getStockData(url)
       console.log(data);
     } catch (error) {
       dispatch(fetchFail());
-      toastErrorNotify(`${url} can not be deleted`);
+      toastErrorNotify( `${url} can not be deleted` )
       console.log(error);
     }
   };
