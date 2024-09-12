@@ -40,7 +40,7 @@ console.log(firms)
 <Typography variant="h4" color={"error"} mb={3}>Firms</Typography>
 <Button variant="contained">NEW FIRM</Button>
 
-<Grid container>
+<Grid container justifyContent={"center"} spacing={2}>
 
 
 {firms?.map( (firm) => (

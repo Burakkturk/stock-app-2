@@ -12,7 +12,7 @@ export default function FirmCard({firm}) {
     <Card sx={{
 
         p: 2,
-        maxWidth: "300px",
+        width: "300px",
         height: "400px",
         display: "flex",
         flexDirection: "column",
