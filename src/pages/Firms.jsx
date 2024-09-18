@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect,useState } from "react"
 import { Button, Typography } from "@mui/material"
 import Grid from "@mui/material/Grid"
 import axios from "axios"
@@ -13,6 +13,9 @@ const Firms = () => {
 // const dispatch = useDispatch()
 const {getStockData} = useStockCall()
 const {firms } = useSelector((state) => state.stock)
+const [open, setOpen] = useState(false);
+const handleOpen = () => setOpen(true);
+const handleClose = () => setOpen(false);
 
 //   const getFirms = async () => {
 //     dispatch(fetchStart())
@@ -39,8 +42,10 @@ console.log(firms)
 
   return <div>
 <Typography variant="h4" color={"error"} mb={3}>Firms</Typography>
-<Button variant="contained">NEW FIRM</Button>
-<FirmModal/>
+<Button variant="contained" onClick={handleOpen}>NEW FIRM</Button>
+
+
+<FirmModal open={open} handleClose={handleClose}/>
 <Grid container justifyContent={"center"} spacing={2}>
 
 
