@@ -6,6 +6,7 @@ import axios from "axios"
 import { useDispatch, useSelector } from "react-redux"
 import useStockCall from "../hooks/useStockCall_old"
 import FirmCard from "../components/FirmCard"
+import FirmModal from "../components/FirmModal"
 
 const Firms = () => {
 // const {token} = useSelector((state) => state.auth)
@@ -39,7 +40,7 @@ console.log(firms)
   return <div>
 <Typography variant="h4" color={"error"} mb={3}>Firms</Typography>
 <Button variant="contained">NEW FIRM</Button>
-
+<FirmModal/>
 <Grid container justifyContent={"center"} spacing={2}>
 
 
