@@ -27,12 +27,7 @@ setInfo({...info, [name]:value})
 const handleSubmit = (e) => {
   e.preventDefault()
   postStockData("firms", info)
-  setInfo({
-    name: "",
-    phone: "",
-    address: "",
-    image: "",
-  })
+ 
   handleClose()
 }
   
