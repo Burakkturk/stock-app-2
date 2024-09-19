@@ -8,15 +8,17 @@ import { modalStyle } from "../styles/globalStyles";
 import { useState } from "react";
 import useStockCall from "../hooks/useStockCall";
 
-export default function FirmModal({ open, handleClose }) {
+export default function FirmModal({ open, handleClose,
+   info, setInfo
+ }) {
 
   const {postStockData} = useStockCall()
-  const [info, setInfo] = useState({
-    name: "",
-    phone: "",
-    address: "",
-    image: "",
-  });
+  // const [info, setInfo] = useState({
+  //   name: "",
+  //   phone: "",
+  //   address: "",
+  //   image: "",
+  // });
 
   const handleChange = (e) => {
     const {name,value} = e.target
