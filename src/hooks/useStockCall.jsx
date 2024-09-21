@@ -45,6 +45,19 @@ const useStockCall = () => {
       console.log(error);
     }
   };
+  const putStockData = async (url,info) => {
+    dispatch(fetchStart());
+    try {
+      await axiosWithToken.put(`/stock/${url}/${info.id}/`,info);
+      toastSuccessNotify(`${url} succesfuly uptaded`);
+      getStockData(url);
+    
+    } catch (error) {
+      dispatch(fetchFail());
+      toastErrorNotify(`${url} can not be uptaded`);
+      console.log(error);
+    }
+  };
 
   //   const getFirms = async () => {
   //     dispatch(fetchStart())
@@ -78,7 +91,7 @@ const useStockCall = () => {
   // }
   //   }
 
-  return { getStockData, deleteStockData, postStockData };
+  return { getStockData, deleteStockData, postStockData,putStockData };
 };
 
 export default useStockCall;

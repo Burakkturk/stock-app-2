@@ -12,7 +12,7 @@ export default function FirmModal({ open, handleClose,
    info, setInfo
  }) {
 
-  const {postStockData} = useStockCall()
+  const {postStockData, putStockData} = useStockCall()
   // const [info, setInfo] = useState({
   //   name: "",
   //   phone: "",
@@ -26,7 +26,13 @@ setInfo({...info, [name]:value})
   }
 const handleSubmit = (e) => {
   e.preventDefault()
+  console.log(info.id)
+  if (info.id) {
+    putStockData("firms", info)
+  } else {
   postStockData("firms", info)
+  }
+ 
  
   handleClose()
 }

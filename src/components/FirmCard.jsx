@@ -11,6 +11,7 @@ import useStockCall from '../hooks/useStockCall_old';
 
 export default function FirmCard({firm, handleOpen,info,setInfo}) {
   const {deleteStockData} = useStockCall()
+ 
   return (
     <Card sx={{
 
