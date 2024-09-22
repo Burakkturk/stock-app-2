@@ -2,6 +2,7 @@ import { fetchFail, fetchStart, getStockSuccess } from "../features/stockSlice";
 import { useDispatch } from "react-redux";
 import useAxios from "./useAxios";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
+
 const useStockCall = () => {
 
   const dispatch = useDispatch();
