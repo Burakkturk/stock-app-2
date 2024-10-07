@@ -1,27 +1,19 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Modal from "@mui/material/Modal";
-import { modalStyle } from "../styles/globalStyles";
-import { useState } from "react";
+import { modalStyle } from "../styles/globalStyles";  
 import useStockCall from "../hooks/useStockCall";
 
-export default function FirmModal({ open, handleClose,
+export default function ProductModal({ open, handleClose,
    info, setInfo
  }) {
 
   const {postStockData, putStockData} = useStockCall()
-  // const [info, setInfo] = useState({
-  //   name: "",
-  //   phone: "",
-  //   address: "",
-  //   image: "",
-  // });
+
 
   const handleChange = (e) => {
-    // const {name,value} = e.target
+   
 setInfo({...info, [name]:value})
   }
 const handleSubmit = (e) => {
@@ -50,45 +42,11 @@ const handleSubmit = (e) => {
           component="form"
           onSubmit={handleSubmit}
           >
+            
             <TextField
-              label="Firm Name"
+              label="Product Name"
               name="name"
               id="name"
-              type="text"
-              variant="outlined"
-              onChange={handleChange}
-              required
-              value={info?.name}
-            
-            />
-          
-            <TextField
-              label="Phone"
-              name="phone"
-              id="phone"
-              type="tel"
-              variant="outlined"
-              onChange={handleChange}
-              required
-              value={info?.phone}
-            
-            />
-          
-            <TextField
-              label="Address"
-              name="address"
-              id="adress"
-              type="text"
-              variant="outlined"
-              onChange={handleChange}
-              required
-              value={info?.adress}
-            
-            />
-            <TextField
-              label="Image"
-              name="image"
-              id="image"
               type="url"
               variant="outlined"
               onChange={handleChange}
