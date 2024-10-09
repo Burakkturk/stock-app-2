@@ -3,29 +3,38 @@ import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 
 const columns = [
-  { field: 'id', headerName: 'ID', width: 90 },
-  {
-    field: 'firstName',
-    headerName: 'First name',
-    width: 150,
-    editable: true,
-  },
+  { field: 'id', headerName: '#', width: 90 },
+  
   {
     field: 'lastName',
-    headerName: 'Last name',
+    headerName: 'Category',
     width: 150,
     editable: true,
   },
   {
     field: 'age',
-    headerName: 'Age',
+    headerName: 'Brand',
+    type: 'number',
+    width: 110,
+    editable: true,
+  },
+  {
+    field: 'age',
+    headerName: 'Stock',
+    type: 'number',
+    width: 110,
+    editable: true,
+  },
+  {
+    field: 'age',
+    headerName: 'Actions',
     type: 'number',
     width: 110,
     editable: true,
   },
   {
     field: 'fullName',
-    headerName: 'Full name',
+    headerName: 'Name',
     description: 'This column has a value getter and is not sortable.',
     sortable: false,
     width: 160,

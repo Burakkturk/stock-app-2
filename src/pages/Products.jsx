@@ -13,6 +13,7 @@ const Products = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
+    
     setOpen(false); };
 
   //   const getFirms = async () => {
@@ -33,6 +34,8 @@ const Products = () => {
 
   useEffect(() => {
     getStockData("products");
+    getStockData("categories");
+    getStockData("brands");
   }, []);
   return (
     <div>

@@ -4,33 +4,40 @@ import TextField from "@mui/material/TextField";
 import Modal from "@mui/material/Modal";
 import { modalStyle } from "../styles/globalStyles";
 import useStockCall from "../hooks/useStockCall";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import { useSelector } from "react-redux";
 
 export default function ProductModal({ open, handleClose }) {
-  const { postStockData, putStockData } = useStockCall();
-
+  const { postStockData } = useStockCall();
+  const { categories } = useSelector((state) => state.stock);
   const [info, setInfo] = useState({
     name: "",
-    phone: "",
-    address: "",
-    image: "",
+    category_id: "",
+    brand_id: "",
   });
   const handleChange = (e) => {
     setInfo({ ...info, [name]: value });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(info.id);
 
     postStockData("products", info);
 
     handleClose();
+    setInfo({name:"",    category_id:"", brand_id:""})
   };
 
   return (
     <div>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={() => {
+          setInfo({ name:"", category_id:"", brand_id:""})
+          handleClose()
+        }}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -40,6 +47,46 @@ export default function ProductModal({ open, handleClose }) {
             component="form"
             onSubmit={handleSubmit}
           >
+            <FormControl fullWidth>
+              <InputLabel id="categories">Categories</InputLabel>
+              <Select
+                labelId="category"
+                id="category"
+                name="category_id"
+                value={info?.category_id || ""}
+                label="Categories"
+                onChange={handleChange}
+              >
+                {categories?.map(({ id, name }) => (
+                  <MenuItem key={id} value={id}>
+                    {name}
+                  </MenuItem>
+                ))}
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
+            </FormControl>
+            <FormControl fullWidth>
+              <InputLabel id="brand">Brands</InputLabel>
+              <Select
+                labelId="categories"
+                id="brand"
+                name="brand_id"
+                value={info?.brand_id || ""}
+                label="brand"
+                onChange={handleChange}
+              >
+                {brands?.map(({ id, name }) => (
+                  <MenuItem key={id} value={id}>
+                    {name}
+                  </MenuItem>
+                ))}
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
+            </FormControl>
             <TextField
               label="Product Name"
               name="name"
