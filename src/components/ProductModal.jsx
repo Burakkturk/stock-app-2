@@ -47,11 +47,11 @@ const handleSubmit = (e) => {
               label="Product Name"
               name="name"
               id="name"
-              type="url"
+              type="text"
               variant="outlined"
               onChange={handleChange}
               required
-              value={info?.image}
+              value={info?.name}
             
             />
           
