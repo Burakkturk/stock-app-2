@@ -1,6 +1,6 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
+import { DataGrid, GridActionsCellItem, GridToolbar } from "@mui/x-data-grid";
 import { useSelector } from "react-redux";
 import { DeleteForeverIcon } from "@mui/icons-material";
 import { type } from "persist";
@@ -71,19 +71,15 @@ const rows = [
 
 
   return (
-    <Box sx={{ height: 400, width: "100%" }}>
+    <Box sx={{ width: "100%", mt:4 }}>
       <DataGrid
+      autoHeight
         rows={product}
         columns={columns}
-        initialState={{
-          pagination: {
-            paginationModel: {
-              pageSize: 5,
-            },
-          },
-        }}
-        pageSizeOptions={[5]}
-        checkboxSelection
+       
+        pageSize={10}
+        pageSizeOptions={[25,50,75,100]}
+        slots={{toolbar: GridToolbar}}
         disableRowSelectionOnClick
       />
     </Box>
