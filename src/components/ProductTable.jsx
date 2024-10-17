@@ -2,16 +2,12 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import { DataGrid, GridActionsCellItem, GridToolbar } from "@mui/x-data-grid";
 import { useSelector } from "react-redux";
-import { DeleteForeverIcon } from "@mui/icons-material";
-import { type } from "persist";
+import  DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import useStockCall from "../hooks/useStockCall";
-export default function ProductTable() {
 
-  const { products } = useSelector((state) => state.stock);
-  const {deleteStockData} = useStockCall()
 
 const columns = [
-  { field: "id", headerName: "#", width: 90, headerAlign: "center", flex: 0.5 },
+  { field: "id", headerName: "#", headerAlign: "center", align:"center", flex: 0.5 },
 
   {
     field: "category",
@@ -39,14 +35,14 @@ headerAlign: "center",
   {
     field: "actions",
     headerName: "Actions",
-    type="actions",
+    // type="actions",
     flex: 1,
     headerAlign: "center",
     align: "center",
     getActions: (params) => [
       <GridActionsCellItem icon={<DeleteForeverIcon/>} label="Delete" sx={btnStyle} onClick={() => deleteStockData("products", props.id)} />
     ]
-  }
+  },
   {
     field: "name",
     headerName: "Name",
@@ -68,13 +64,15 @@ const rows = [
   { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
 ];
 
+export default function ProductTable() {
 
-
+  const { products } = useSelector((state) => state.stock);
+  const {deleteStockData} = useStockCall()
   return (
     <Box sx={{ width: "100%", mt:4 }}>
       <DataGrid
       autoHeight
-        rows={product}
+        rows={products}
         columns={columns}
        
         pageSize={10}
@@ -84,4 +82,6 @@ const rows = [
       />
     </Box>
   );
+
+ 
 }

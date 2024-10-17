@@ -9,6 +9,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
 export default function ProductModal({ open, handleClose }) {
   const { postStockData } = useStockCall();
@@ -19,7 +20,7 @@ export default function ProductModal({ open, handleClose }) {
     brand_id: "",
   });
   const handleChange = (e) => {
-    setInfo({ ...info, [name]: value });
+    setInfo({ ...info, [e.target.name]: e.target.value });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -77,7 +78,7 @@ export default function ProductModal({ open, handleClose }) {
                 label="brand"
                 onChange={handleChange}
               >
-                {brands?.map(({ id, name }) => (
+                {brand?.map(({ id, name }) => (
                   <MenuItem key={id} value={id}>
                     {name}
                   </MenuItem>

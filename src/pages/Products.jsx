@@ -1,20 +1,22 @@
 import ProductTable from "../components/ProductTable";
 import { useEffect, useState } from "react";
 import { Button, Typography } from "@mui/material";
-import axios from "axios";
-// import { fetchFail, fetchStart, getFirmsSuccess } from "../features/stockSlice"
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import useStockCall from "../hooks/useStockCall_old";
 import ProductModal from "../components/ProductModal";
+
 const Products = () => {
-  const { getStockData } = useStockCall();
+  const { getStockData, getProdCatBrands } = useStockCall();
   const { products } = useSelector((state) => state.stock);
+
+
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => {
-    
-    setOpen(false); };
+  const handleClose = () => {setOpen(false);
+
+
+  };
 
   //   const getFirms = async () => {
   //     dispatch(fetchStart())
@@ -33,9 +35,10 @@ const Products = () => {
   //   }
 
   useEffect(() => {
-    getStockData("products");
-    getStockData("categories");
-    getStockData("brands");
+    // getStockData("products");
+    // getStockData("categories");
+    // getStockData("brands");
+    getProdCatBrands ()
   }, []);
   return (
     <div>
@@ -49,6 +52,7 @@ const Products = () => {
       <ProductModal
         open={open}
         handleClose={handleClose}
+     
   
       />
 
