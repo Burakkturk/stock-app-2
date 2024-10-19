@@ -3,8 +3,15 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PaymentsIcon from "@mui/icons-material/Payments";
 import { amber, deepPurple, pink } from "@mui/material/colors";
 import { Paper, Grid, Avatar, Typography, Box } from "@mui/material";
+import { useSelector } from "react-redux";
 
 const KpiCards = () => {
+  const {sales,purchases} = useSelector((state) => state.stock)
+
+  const totalSales = sales?.map((item) => Number( item.price_total)).reduce((acc,sale) => acc+sale, 0)
+  const totalPurchases = purchases?.map((item) => Number( item.price_total)).reduce((acc,sale) => acc+sale, 0)
+
+ 
   const cardData = [
     {
       id: 1,
@@ -12,7 +19,7 @@ const KpiCards = () => {
       bgColor: deepPurple[100],
       color: deepPurple[700],
       title: "sales",
-      value: "$48000",
+      value: `$${totalSales}`,
     },
     {
       id: 2,
@@ -20,7 +27,7 @@ const KpiCards = () => {
       bgColor: pink[100],
       color: pink[700],
       title: "profit",
-      value: "$32000",
+      value: `$${totalSales - totalPurchases}`,
     },
     {
       id: 3,
@@ -28,7 +35,7 @@ const KpiCards = () => {
       bgColor: amber[100],
       color: amber[700],
       title: "purchases",
-      value: "$81000",
+      value: `$${totalPurchases}`,
     },
   ];
   return (
@@ -36,7 +43,7 @@ const KpiCards = () => {
       <Grid container justifyContent="center" spacing={2}>
         {cardData.map((item) => (
           <Grid item key={item.id}>
-            <Paper sx={{display: "flex", gap:3, p:2, alignItems: "center", width:"350px", justifyContent:"center"}}
+            <Paper sx={{display: "flex", gap:3, p:2, alignItems: "center", width:"280px", justifyContent:"center"}}
             elevation={5}
             >
               <Avatar

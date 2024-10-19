@@ -25,7 +25,7 @@ const {sales,purchases} = useSelector((state) =>  state.stock)
 
   }))
 
-  console.log(salesData)
+ 
   return(
     <Grid container justifyContent="center" spacing={3} mt={4}>
  <Grid item xs={12} md={6}>
