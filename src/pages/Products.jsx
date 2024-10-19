@@ -2,12 +2,13 @@ import ProductTable from "../components/ProductTable";
 import { useEffect, useState } from "react";
 import { Button, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
-import useStockCall from "../hooks/useStockCall_old";
+// import useStockCall from "../hooks/useStockCall_old";
+import useStockCall from "../hooks/useStockCall";
 import ProductModal from "../components/ProductModal";
 
 const Products = () => {
   const { getStockData, getProdCatBrands } = useStockCall();
-  const { products } = useSelector((state) => state.stock);
+  const { products,categories,brands } = useSelector((state) => state.stock);
 
 
 
@@ -35,10 +36,10 @@ const Products = () => {
   //   }
 
   useEffect(() => {
-    // getStockData("products");
-    // getStockData("categories");
-    // getStockData("brands");
-    getProdCatBrands ()
+    getStockData("products");
+    getStockData("categories");
+    getStockData("brands");
+    // getProdCatBrands ()
   }, []);
   return (
     <div>

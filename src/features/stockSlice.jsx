@@ -24,6 +24,15 @@ const stockSlice = createSlice({
       state.loading = false
       state[payload.url] = payload.data
     },
+
+
+    getProdCatBrandsSuccess: (state, {payload}) => {
+      state.loading = false
+      state.products = payload[0]
+      state.categories = payload[1]
+      state.brands = payload[2]
+
+    },
     // getFirmsSuccess: (state, {payload}) => {
     //   state.loading = false
     //   state.firms = payload

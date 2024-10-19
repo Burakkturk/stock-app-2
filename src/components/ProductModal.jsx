@@ -13,7 +13,7 @@ import { useState } from "react";
 
 export default function ProductModal({ open, handleClose }) {
   const { postStockData } = useStockCall();
-  const { categories } = useSelector((state) => state.stock);
+  const { categories,brands } = useSelector((state) => state.stock);
   const [info, setInfo] = useState({
     name: "",
     category_id: "",
@@ -33,7 +33,7 @@ export default function ProductModal({ open, handleClose }) {
 
   return (
     <div>
-      <Modal
+      <Modal  
         open={open}
         onClose={() => {
           setInfo({ name:"", category_id:"", brand_id:""})
@@ -49,13 +49,13 @@ export default function ProductModal({ open, handleClose }) {
             onSubmit={handleSubmit}
           >
             <FormControl fullWidth>
-              <InputLabel id="categories">Categories</InputLabel>
+              <InputLabel id="category">Categories</InputLabel>
               <Select
-                labelId="category"
+                labelId="Category"
                 id="category"
                 name="category_id"
                 value={info?.category_id || ""}
-                label="Categories"
+                label="category"
                 onChange={handleChange}
               >
                 {categories?.map(({ id, name }) => (
@@ -63,22 +63,20 @@ export default function ProductModal({ open, handleClose }) {
                     {name}
                   </MenuItem>
                 ))}
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+          
               </Select>
             </FormControl>
             <FormControl fullWidth>
               <InputLabel id="brand">Brands</InputLabel>
               <Select
-                labelId="categories"
+                labelId="brand"
                 id="brand"
                 name="brand_id"
                 value={info?.brand_id || ""}
                 label="brand"
                 onChange={handleChange}
               >
-                {brand?.map(({ id, name }) => (
+                {brands?.map(({ id, name }) => (
                   <MenuItem key={id} value={id}>
                     {name}
                   </MenuItem>
