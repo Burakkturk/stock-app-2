@@ -4,7 +4,7 @@
 Thanks to visit my Github! In this project, i used React-Context. This project is created with ReactJS, Redux, Redux Toolkit, Redux Persist, Axios, Material UI, Formik, Yup, Toastify, Emotion/react, Tremor/react Here is the website link for this project (https://stock-app1717.netlify.app/)
 Project aims to create a Stock App. You can use account information below to login;
 
-email: abcd@abcd.com
+email: abcd@abcd.com  <br/>
 password: Abcd123.
 
 ## Output
