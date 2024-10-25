@@ -1,4 +1,3 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -22,7 +21,7 @@ export default function FirmModal({ open, handleClose,
 
   const handleChange = (e) => {
     // const {name,value} = e.target
-setInfo({...info, [name]:value})
+setInfo({...info, [e.target.name]: e.target.value})
   }
 const handleSubmit = (e) => {
   e.preventDefault()

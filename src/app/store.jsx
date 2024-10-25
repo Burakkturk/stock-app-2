@@ -19,7 +19,7 @@ const store = configureStore({
     stock: stockReducer,
   },
   devTools: process.env.NODE_ENV !== "production",
-  middleware: getDefaultMiddleware ({
+  middleware: getDefaultMiddleware({
 
     serializableCheck: false,
   })

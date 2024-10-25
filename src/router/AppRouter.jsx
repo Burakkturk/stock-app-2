@@ -7,7 +7,7 @@ import PrivateRouter from "./PrivateRouter";
 import Dashboard from "../pages/Dashboard";
 import Purchases from "../pages/Purchases";
 import Firms from "../pages/Firms";
-import Brands from "../pages/brands";
+import Brands from "../pages/Brands";
 import Products from "../pages/Products";
 import Sales from "../pages/Sales";
 

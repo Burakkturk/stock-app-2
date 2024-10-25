@@ -1,65 +1,41 @@
-import ProductTable from "../components/ProductTable";
-import { useEffect, useState } from "react";
-import { Button, Typography } from "@mui/material";
-import { useSelector } from "react-redux";
-// import useStockCall from "../hooks/useStockCall_old";
-import useStockCall from "../hooks/useStockCall";
-import ProductModal from "../components/ProductModal";
+import { useEffect, useState } from "react"
+import Typography from "@mui/material/Typography"
+import Button from "@mui/material/Button"
+import { useSelector } from "react-redux"
+import useStockCall from "../hooks/useStockCall"
+import ProductModal from "../components/ProductModal"
+import ProductTable from "../components/ProductTable"
 
 const Products = () => {
-  const { getStockData, getProdCatBrands } = useStockCall();
-  const { products,categories,brands } = useSelector((state) => state.stock);
+  const { getStockData, getProdCatBrands } = useStockCall()
+  const { products } = useSelector((state) => state.stock)
 
-
-
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => {setOpen(false);
-
-
-  };
-
-  //   const getFirms = async () => {
-  //     dispatch(fetchStart())
-  // try {
-  //   const {data} = await axios(`${import.meta.env.VITE_BASE_URL}/stock/firms/` , {
-  //     headers: { Authorization: `Token ${token}`}
-  //   })
-  //   dispatch(getFirmsSuccess(data))
-  //   console.log(data)
-  // }
-  // catch (error) {
-  //   dispatch(fetchFail())
-  //   console.log(error)
-
-  // }
-  //   }
+  const [open, setOpen] = useState(false)
+  const handleOpen = () => setOpen(true)
+  const handleClose = () => setOpen(false)
 
   useEffect(() => {
-    getStockData("products");
-    getStockData("categories");
-    getStockData("brands");
-    // getProdCatBrands ()
-  }, []);
+    // getStockData("products")
+    // getStockData("categori")
+    // getStockData("brands")
+
+    //! Promise.all ile es zamanli istek atilan fonks.
+    getProdCatBrands()
+  }, [])
+
   return (
     <div>
       <Typography variant="h4" color={"error"} mb={3}>
-        Products  
+        Products
       </Typography>
       <Button variant="contained" onClick={handleOpen}>
         NEW PRODUCT
       </Button>
 
-      <ProductModal
-        open={open}
-        handleClose={handleClose}
-     
-  
-      />
-
+      <ProductModal open={open} handleClose={handleClose} />
       <ProductTable />
     </div>
-  );
-};
+  )
+}
 
-export default Products;
+export default Products

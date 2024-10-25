@@ -1,42 +1,39 @@
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import Modal from "@mui/material/Modal";
-import { modalStyle } from "../styles/globalStyles";
-import useStockCall from "../hooks/useStockCall";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useState } from "react"
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import TextField from "@mui/material/TextField"
+import Modal from "@mui/material/Modal"
+import InputLabel from "@mui/material/InputLabel"
+import MenuItem from "@mui/material/MenuItem"
+import FormControl from "@mui/material/FormControl"
+import Select from "@mui/material/Select"
+
+import { modalStyle } from "../styles/globalStyles"
+import useStockCall from "../hooks/useStockCall"
+import { useSelector } from "react-redux"
 
 export default function ProductModal({ open, handleClose }) {
-  const { postStockData } = useStockCall();
-  const { categories,brands } = useSelector((state) => state.stock);
-  const [info, setInfo] = useState({
-    name: "",
-    category_id: "",
-    brand_id: "",
-  });
+  const { postStockData } = useStockCall()
+  const { categories, brands } = useSelector((state) => state.stock)
+
+  const [info, setInfo] = useState({ name: "", category_id: "", brand_id: "" })
+
   const handleChange = (e) => {
-    setInfo({ ...info, [e.target.name]: e.target.value });
-  };
+    setInfo({ ...info, [e.target.name]: e.target.value })
+  }
+
   const handleSubmit = (e) => {
-    e.preventDefault();
-
-    postStockData("products", info);
-
-    handleClose();
-    setInfo({name:"",    category_id:"", brand_id:""})
-  };
-
+    e.preventDefault()
+    postStockData("products", info)
+    handleClose()
+    setInfo({ name: "", category_id: "", brand_id: "" })
+  }
   return (
     <div>
-      <Modal  
+      <Modal
         open={open}
         onClose={() => {
-          setInfo({ name:"", category_id:"", brand_id:""})
+          setInfo({ name: "", category_id: "", brand_id: "" })
           handleClose()
         }}
         aria-labelledby="modal-modal-title"
@@ -51,7 +48,7 @@ export default function ProductModal({ open, handleClose }) {
             <FormControl fullWidth>
               <InputLabel id="category">Categories</InputLabel>
               <Select
-                labelId="Category"
+                labelId="category"
                 id="category"
                 name="category_id"
                 value={info?.category_id || ""}
@@ -63,9 +60,9 @@ export default function ProductModal({ open, handleClose }) {
                     {name}
                   </MenuItem>
                 ))}
-          
               </Select>
             </FormControl>
+
             <FormControl fullWidth>
               <InputLabel id="brand">Brands</InputLabel>
               <Select
@@ -81,9 +78,6 @@ export default function ProductModal({ open, handleClose }) {
                     {name}
                   </MenuItem>
                 ))}
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
               </Select>
             </FormControl>
             <TextField
@@ -92,9 +86,9 @@ export default function ProductModal({ open, handleClose }) {
               id="name"
               type="text"
               variant="outlined"
-              onChange={handleChange}
+              value={info?.name || ""}
               required
-              value={info?.name}
+              onChange={handleChange}
             />
 
             <Button variant="contained" type="submit">
@@ -104,5 +98,5 @@ export default function ProductModal({ open, handleClose }) {
         </Box>
       </Modal>
     </div>
-  );
+  )
 }

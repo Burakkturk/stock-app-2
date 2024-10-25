@@ -41,8 +41,8 @@ const useAuthCall = () => {
 
 
     // const BASE_URL = "https://27113.fullstack.clarusway.com/"
-    console.log(import.meta.env.VITE_API_KEY)
-    console.log(import.meta.env.VITE_API_KEY_PROD)
+    // console.log(import.meta.env.VITE_API_KEY)
+    // console.log(import.meta.env.VITE_API_KEY_PROD)
   
     dispatch(fetchStart())
     try {
@@ -54,7 +54,7 @@ const useAuthCall = () => {
       toastSuccessNotify("login islemi basarili")
       navigate("/stock")
     } catch (error) {
-      console.log(error)
+      console.log(error.message)
       dispatch(fetchFail())
       toastErrorNotify(error.response.data.non_field_errors[0])
     }
@@ -76,12 +76,12 @@ const useAuthCall = () => {
   } catch (error) {
     console.log(error)
     dispatch(fetchFail())
-    toastErrorNotify(error.response.data.non_field_errors[0])
+    toastErrorNotify("Logout islemi basarisiz")
   }
 }
 const register = async (userData) => {
-  console.log(import.meta.env.VITE_API_KEY)
-  console.log(import.meta.env.VITE_API_KEY_PROD)
+  // console.log(import.meta.env.VITE_API_KEY)
+  // console.log(import.meta.env.VITE_API_KEY_PROD)
 
   dispatch(fetchStart())
   try {
