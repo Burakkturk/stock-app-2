@@ -6,7 +6,7 @@ Project aims to create a Stock App.
 
 ## Output
 
-![STOCK APP](./Stock%20App.gif)
+![STOCK APP]()
 
 ### At the end of the project, following topics are to be covered;
 
