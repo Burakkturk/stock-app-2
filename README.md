@@ -1,8 +1,28 @@
-# React + Vite
+# Welcome to Stock App :wave:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
+Thanks to visit my Github! In this project, i used React-Context. This project is created with ReactJS, Redux, Redux Toolkit, Redux Persist, Axios, Material UI, Formik, Yup, Toastify, Emotion/react, Tremor/react Here is the website link for this project (https://stock-app1717.netlify.app/)
+Project aims to create a Stock App. 
 
-Currently, two official plugins are available:
+## Output
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![STOCK APP](./Stock%20App.gif)
+
+### At the end of the project, following topics are to be covered;
+
+-  HTML
+
+-  CSS
+
+-  JS
+
+-  ReactJS
+
+-  ReactBoostrap
+
+### Got feedback for me?
+
+Feedbacks are always improve my technical knowledge, so feel free to give me a feedback through my LinkedIn account (https://www.linkedin.com/in/burakkturk) 🙌
+
+This Is What I Did! :art:
+
